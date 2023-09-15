@@ -1,0 +1,67 @@
+#include<iostream>
+using namespace std;
+int a,b;
+void Add()
+{
+    cout<<" Enter 1st Number = ";
+    cin>>a;
+    cout<<" Enter 2nd Number = ";
+    cin>>b;
+    cout<<" Addition = "<<a+b;
+
+}
+void Subtract()
+{
+    cout<<" Enter 1st Number = ";
+    cin>>a;
+    cout<<" Enter 2nd Number = ";
+    cin>>b;
+    cout<<" Subtraction = "<<a-b;
+    
+}
+void Multiplication()
+{
+    cout<<" Enter 1st Number = ";
+    cin>>a;
+    cout<<" Enter 2nd Number = ";
+    cin>>b;
+    cout<<" Multiplication = "<<a*b;
+    
+}
+void Division()
+{ 
+    cout<<" Enter 1st Number = ";
+    cin>>a;
+    cout<<" Enter 2nd Number = ";
+    cin>>b;
+    cout<<" Division = "<<a/b;
+    
+}
+int main()
+{
+    char choice;
+    cout<<" *** Calculator *** "<<endl;
+    cout<<" 1. +\n 2. -\n 3. *\n 4. /  "<<endl;
+    cout<<" Enter Your Choice = ";
+    cin>>choice;
+    switch(choice)
+    {
+        case '+':
+            Add();
+        break;
+        case '-':
+            Subtract();
+        break;
+            case '*':
+            Multiplication();
+        break;
+        case '/':
+             Division();
+        break;
+        default:
+        cout<<" Invalid choice "<<endl;
+       
+    }
+    main();
+
+}
