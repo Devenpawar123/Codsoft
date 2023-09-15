@@ -1,0 +1,38 @@
+#include <iostream>
+#include<cstdlib>
+#include <ctime>
+using namespace std;
+int main()
+{
+    int No,counter=0;
+    srand(time(0));
+    int Random = rand()%100;
+    // cout<<" "<<Random;
+    cout<<endl;
+    do
+    {
+        cout<<"  Enter a number too Guess Between 1 to 100 = ";
+        cin>>No;
+        counter+=1;
+       
+        if(Random==No)
+        {
+            cout<<" Correct ! "<<endl;
+        }
+        else if(Random<No)
+        {
+            cout<<" Too high ! "<<endl;
+        }
+        else
+        {
+            cout<<" Too low ! "<<endl;
+        }
+    }
+    while ( Random!=No);
+
+    if(Random==No)
+    {
+        cout<<" Total attempts required to guess  = "<<counter<<endl;
+    }
+
+}
