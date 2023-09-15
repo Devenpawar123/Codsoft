@@ -1,0 +1,154 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+class node 
+{
+    public:
+    string task;
+    string status;
+    node* next;
+    node(string task1) 
+    {
+        this->task = task1;
+        this->status = "Pending task";
+        this->next = NULL;
+    }
+};
+class List 
+{
+    public:
+    string tasks;
+    node* head = NULL;
+    
+    string input_Task()
+    {
+        cin.ignore();
+        cout << "Enter the task:";
+        getline(cin, tasks);
+        return tasks;
+    }
+    
+    void add_the_Task() 
+    {
+        List : input_Task();   
+        struct node* newNode = new node(tasks);
+        if(head == NULL) 
+        {
+            head = newNode;
+            cout << "Task Added Succesfully" << endl;
+            return;
+        }
+        else
+        {
+            node *Temp;
+            Temp = head;
+            while(Temp -> next != NULL)
+            {
+                Temp = Temp -> next;
+            }
+            Temp -> next = newNode;
+            cout << "Task Added Succesfully" << endl;
+        }
+        
+    }
+    
+    void updateTask(int position) 
+    {
+        int current_position = 0;
+        node* temp = head;
+        while(current_position != position)
+        {
+           temp = temp -> next;
+           current_position++;
+        }
+        temp->status ="Complete task";
+
+        cout << "Task is marked successfully as completed task" << endl;
+    }
+
+    
+    void DeleteTask(int position) 
+    {
+   
+        int current_position = 0;
+        node* prev = head;
+        if(position == 0) 
+        {
+            head = head -> next;
+            free(prev);
+            cout << "\nTask delete succesfully..." << endl;
+            return;
+        }
+        while(current_position != position - 1)
+        {
+            prev = prev -> next;
+            current_position++;
+        }
+        node* temp = prev -> next;
+        prev -> next = prev -> next -> next;
+        free(temp);
+        cout << "\nTask deleted succesfully" << endl;
+    }
+    
+    void Display() 
+    {
+        struct node *temp;
+        temp = head;
+        cout << "_____To Do List___" << endl;
+        cout << endl;
+        int i = 0;
+        while(temp != NULL)
+        {
+            cout << i << ") Work : " << temp -> task << " = status :" << temp -> status;
+            cout << endl;
+            temp = temp -> next;
+            i++;
+        }
+        cout << "\n**********************************************" << endl;
+    }
+};
+
+
+int main() 
+{
+    List l1;
+    int iChoice,position;
+    
+    do {
+        cout << "_______________________________________________________" <<endl;
+        cout << "1)Add the new task \n2)Mark the task as Completed \n3)Displaying the task with current Status \n4)Remove the task from the list \n5)Exit " << endl;
+        cout << "_______________________________________________________" <<endl;
+        cout << "what you want to do? = ";
+        cin >> iChoice;
+        cout << "\n_____________________________________________________" << endl;
+        switch(iChoice) 
+        {
+            case 1:
+                l1.add_the_Task();
+                break;
+
+            case 2:
+                cout << "Enter the position of the task you want to mark it as a completed task :";
+                cin >> position;
+                l1.updateTask(position);
+                break;
+
+            case 3:
+                l1.Display();
+                break;
+
+             case 4:
+                cout << "Enter the position of the task you want to deleted :";
+                cin >> position;
+                l1.DeleteTask(position);
+                break;
+
+            case 5:
+                cout << "Exit" << endl;
+                break;     
+        }
+    }while(iChoice != 5);
+
+    return 0;
+}
